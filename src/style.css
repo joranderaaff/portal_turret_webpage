@@ -1,0 +1,67 @@
+html {
+    height: 100%;
+}
+
+html,
+body {
+    box-sizing: border-box;
+    font-size: 20px;
+    color: #a88438;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
+body {
+    background-color: #744d19;
+    background-position: center center;
+    background-image: url("background.png");
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    height: 150px;
+    margin: 25px;
+}
+
+#accel-canvas {
+    border: 1px solid #744d19;
+    background-color: #4b3317;
+}
+
+#logo {
+    height: 100%;
+    background-size: contain;
+}
+
+#log {
+    overflow-y: hidden;
+    margin: 25px;
+}
+
+pre {
+    margin: 0 0;
+    width: 100%;
+}
+
+pre.ascii-logo {
+}
+
+#override-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+#manual-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+#manual-controls input {
+    display: inline-block;
+    margin-right: 20px;
+}

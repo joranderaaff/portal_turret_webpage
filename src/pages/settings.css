@@ -1,0 +1,12 @@
+
+
+input[type="text"], input[type="submit"] {
+    box-sizing: border-box;
+    font-size: 20px;
+    color: #a88438;
+    border: 2px solid #a88438;
+    background-color: transparent;
+    padding: 10px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}

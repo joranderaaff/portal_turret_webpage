@@ -1,0 +1,22 @@
+input[type="button"] {
+    box-sizing: border-box;
+    font-size: 20px;
+    color: #a88438;
+    border: 2px solid rgb(168, 132, 56);
+    background-color: transparent;
+    padding: 10px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    width: 300px;
+    display: block;
+}
+
+input[type="button"]:hover {
+    
+    background-color: rgba(168, 132, 56, 0.1);;
+}
+
+input[type="button"]:active {
+    
+    background-color: rgba(168, 132, 56, 0.3);;
+}

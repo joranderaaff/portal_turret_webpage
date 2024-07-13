@@ -1,0 +1,37 @@
+.text-label {
+    display: block;
+}
+
+input {
+    margin: 10px 0px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+input[type="submit"],
+input[type="text"] {
+    display: block;
+}
+
+input[type="password"], input[type="submit"] {
+    box-sizing: border-box;
+    font-size: 20px;
+    color: #a88438;
+    border: 2px solid #a88438;
+    background-color: transparent;
+    padding: 10px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    
+    background-color: rgba(168, 132, 56, 0.1);;
+}
+
+input[type="submit"]:active {
+    
+    background-color: rgba(168, 132, 56, 0.3);;
+}
