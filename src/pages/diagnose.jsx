@@ -1,7 +1,8 @@
 
 import { origin } from '../endpoint';
-import { apertureLogo } from '../apertureLogo';
 import './diagnose.css';
+import { Header } from '../components/Header';
+import { Fragment } from 'preact/jsx-runtime';
 
 export function Diagnose() {
 
@@ -22,14 +23,14 @@ export function Diagnose() {
 	]
 
 	return (
-		<div class="diagnose">
-			<div id="header">
-				<img id="logo" src={apertureLogo()}></img>
+		<Fragment>
+			<Header />
+			<div id="diagnose">
+				<h1>Diagnose</h1>
+				{diagnoseButtons.map((buttonInfo) => {
+					return <input type="button" value={buttonInfo.label} onClick={() => { postDiagnose(buttonInfo.index) }} />
+				})}
 			</div>
-			<h1>Diagnose</h1>
-			{diagnoseButtons.map((buttonInfo) => {
-				return <input type="button" value={buttonInfo.label} onClick={() => { postDiagnose(buttonInfo.index) }} />
-			})}
-		</div>
+		</Fragment>
 	);
 }

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'preact/hooks';
 import { origin } from "../endpoint";
-import { apertureLogo } from '../apertureLogo';
 import { Fragment } from 'preact/jsx-runtime';
 import './setup.css';
 import { getJSON } from '../getJson';
+import { Header } from '../components/Header';
 
 export function Setup() {
 
@@ -50,18 +50,16 @@ export function Setup() {
         <input type="submit" value="Save" />
     </Fragment>
 
-    const apertureLogoBase64 = apertureLogo();
-
     return (
-        <div class="setup">
-            <div id="header">
-                <img id="logo" src={apertureLogoBase64}></img>
+        <Fragment>
+            <Header />
+            <div id="setup">
+                <h1>Setup your network</h1>
+                <form method="POST" action={origin + "/setup"} >
+                    {networksContent}
+                    {formContent}
+                </form>
             </div>
-            <h1>Setup your network</h1>
-            <form method="POST" action={origin + "/setup"} >
-                {networksContent}
-                {formContent}
-            </form>
-        </div>
+        </Fragment>
     );
 }

@@ -4,6 +4,7 @@ import { Fragment } from "preact/jsx-runtime";
 import { getJSON } from '../getJson';
 
 import './settings.css'
+import { Header } from "../components/Header";
 
 export function Settings() {
 
@@ -77,9 +78,12 @@ export function Settings() {
     }
 
     return (
-        <div id="settings">
-            <h1>Settings</h1>
-            {settingsContent}
-        </div>
+        <Fragment>
+            <Header />
+            <div id="settings">
+                <h1>Settings</h1>
+                {settingsContent}
+            </div>
+        </Fragment>
     )
 }

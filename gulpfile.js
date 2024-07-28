@@ -35,7 +35,7 @@ const favicon = require('gulp-base64-favicon');
 
 const srcFolder = 'dist/';
 const dataFolder = 'dist_compiled/';
-const desinationFolder = 'dist_c/';
+const desinationFolder = 'dist_compiled/';
 
 function buildfs_embeded() {
     return new Promise(function (resolve, reject) {

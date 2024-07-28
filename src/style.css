@@ -1,17 +1,20 @@
-html {
-    height: 100%;
-}
-
 html,
 body {
-    box-sizing: border-box;
-    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     color: #a88438;
     font-family: "Courier New", Courier, monospace;
     font-weight: bold;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
+    position: relative;
     background-color: #744d19;
     background-position: center center;
     background-image: url("background.png");
@@ -19,49 +22,79 @@ body {
     background-attachment: fixed;
 }
 
-#header {
+#app {
+    position: relative;
+    min-height: 100%;
+    width: 100%;
+    padding: 10px;
     display: flex;
-    justify-content: space-between;
-    height: 150px;
-    margin: 25px;
+    flex-direction: column;
 }
 
-#accel-canvas {
-    border: 1px solid #744d19;
-    background-color: #4b3317;
+#header {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 25px;
 }
 
 #logo {
-    height: 100%;
+    height: 150px;
+    width: 150px;
+    flex-grow: 0;
+    background-image: url("aperture_logo.png");
+    background-repeat: no-repeat;
     background-size: contain;
+    background-position: 50% 50%;
+}
+
+#aperture-logo {
+    height: 150px;
+    width: 100%;
+    background-image: url("aperture_logo_full.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#accel-canvas-container {
+    overflow: hidden;
+    position: relative;
+    height: 150px;
+    border: 1px solid #744d19;
+    background-color: #4b3317;
+    flex-grow: 1;
+}
+
+#accel-canvas {
+    position: absolute;
+}
+
+#accel-values {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
 }
 
 #log {
-    overflow-y: hidden;
+    overflow-y: auto;
     margin: 25px;
-}
-
-pre {
-    margin: 0 0;
-    width: 100%;
-}
-
-pre.ascii-logo {
+    flex-grow: 1;
 }
 
 #override-button {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-}
-
-#manual-controls {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
+    width: 100%;
 }
 
 #manual-controls input {
     display: inline-block;
-    margin-right: 20px;
+    width: 45%;
+}
+
+.manual-button-container {
+    display: flex;
+    justify-content: space-between;
 }

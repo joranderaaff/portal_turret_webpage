@@ -1,0 +1,17 @@
+#captive-portal {
+    padding: 20px;
+    width: 100%;
+}
+
+#captive-portal a {
+    color: #a88438;
+    border: 2px solid rgb(168, 132, 56);
+    background-color: transparent;
+    padding: 10px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+}

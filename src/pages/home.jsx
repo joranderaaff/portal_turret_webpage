@@ -5,8 +5,9 @@ import { origin, endpoint } from "../endpoint";
 import { Accelerameter } from '../components/Accelerameter';
 import { TypeWriter } from '../components/Typewriter';
 
-import { apertureLogo } from '../apertureLogo';
 import { ManualControls } from '../components/ManualControls';
+import { Fragment } from 'preact/jsx-runtime';
+import { Header } from '../components/Header';
 
 export function Home() {
 
@@ -107,17 +108,17 @@ export function Home() {
 		addMessage(message);
 	}} />;
 
-	const apertureLogoBase64 = apertureLogo();
-
 	return (
-		<div id="main-content" class="home">
+		<Fragment>
 			<div id="header">
-				<img id="logo" src={apertureLogoBase64}></img>
+				<div id="logo"></div>
 				<Accelerameter></Accelerameter>
 			</div>
 			<TypeWriter lines={lines}></TypeWriter>
-			{override}
-			<input id="override-button" type="button" value="Override" onClick={toggleControl} />
-		</div>
+			<div>
+				{override}
+				<input id="override-button" type="button" value="Override" onClick={toggleControl} />
+			</div>
+		</Fragment>
 	);
 }

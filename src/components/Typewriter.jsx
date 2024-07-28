@@ -4,8 +4,17 @@ export function TypeWriter(props) {
 	const [currentLine, setCurrentLine] = useState(0);
 
 	const onDone = () => {
-		setCurrentLine(currentLine + 1);
+		setCurrentLine((prevLine) => {
+			return prevLine + 1;
+		});
 	}
+
+	useEffect(() => {
+		// get the scroll height of the window
+		const scrollHeight = document.body.scrollHeight;
+		// scroll to the bottom of webpage
+		window.scrollTo(0, scrollHeight);
+	}, [currentLine])
 
 	var lineContent = [];
 	for (var i = 0; i <= currentLine; i++) {
@@ -43,6 +52,6 @@ function TypeWriterLine(props) {
 	}
 
 	return (
-		<pre className={props.className}>{props.text.substring(0, characterIndex)}</pre>
+		<div className={props.className}>{props.text.substring(0, characterIndex)}</div>
 	)
 }

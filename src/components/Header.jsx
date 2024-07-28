@@ -1,18 +1,10 @@
-import { useLocation } from 'preact-iso';
+import { Accelerameter } from "./Accelerameter";
 
-export function Header() {
-	const { url } = useLocation();
+export function Header(props) {
 
-	return (
-		<header>
-			<nav>
-				<a href="/" class={url == '/' && 'active'}>
-					Home
-				</a>
-				<a href="/404" class={url == '/404' && 'active'}>
-					404
-				</a>
-			</nav>
-		</header>
-	);
+    var accel = props.showAccel ? <Accelerameter></Accelerameter> : null;
+
+    return <div id="header">
+        <div id="aperture-logo"></div>
+    </div>
 }

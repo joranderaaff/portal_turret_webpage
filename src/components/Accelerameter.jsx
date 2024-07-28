@@ -9,11 +9,21 @@ export function Accelerameter() {
 
     const [orientation, setOrientation] = useState({ x: 0, y: 0, z: 0 });
 
+    const handleBodyResize = () => {
+        let canvas = canvasRef.current || undefined;
+        if (canvas) {
+            console.log(canvas.parentNode.clientWidth);
+            canvas.width = canvas.parentNode.clientWidth;
+        }
+    }
+
     useEffect(() => {
         socket.addEventListener('message', handleMessage);
+        window.addEventListener('resize', handleBodyResize);
 
         return () => {
             socket.removeEventListener('message', handleMessage);
+            window.removeEventListener('resize', handleBodyResize);
         }
     }, []);
 
@@ -78,15 +88,17 @@ export function Accelerameter() {
     let coordinateContent = Object.keys(orientation).map(coordinate => {
         let val = orientation[coordinate];
         val *= 0.004 * 9.80665;
-        let stringVal = val > 0 ? '\u00A0' + val.toFixed(4) : val.toFixed(4) ;
-        return <div>{coordinate}: {stringVal}</div>
+        let stringVal = val > 0 ? '\u00A0' + val.toFixed(2) : val.toFixed(2);
+        return <span>{coordinate}: {stringVal} </span>
     });
 
     return (
         <Fragment>
-            <div>
+            <div id="accel-canvas-container">
                 <canvas id="accel-canvas" ref={canvasRef} width="400" height="150"></canvas>
-                {coordinateContent}
+                <div id="accel-values">
+                    {coordinateContent}
+                </div>
             </div>
         </Fragment>
     );

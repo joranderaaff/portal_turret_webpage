@@ -65,7 +65,7 @@ export function ManualControls(props) {
 
     return (
         <div id="manual-controls">
-            <div>
+            <div class="manual-button-container">
                 <input type="button" value={wingsOpen ? "Close" : "Open"} onClick={() => {
                     toggleWings();
                     props.onMessage("[Manual Command] Open.");
@@ -75,7 +75,7 @@ export function ManualControls(props) {
                     props.onMessage("[Manual Command] Fire!");
                 }} />
             </div>
-            <div>
+            <div class="manual-button-container">
                 <input type="button" value="Left" onMouseDown={startMoveLeft} onMouseUp={stopMoveLeft} />
                 <input type="button" value="Right" onMouseDown={startMoveRight} onMouseUp={stopMoveRight} />
             </div>

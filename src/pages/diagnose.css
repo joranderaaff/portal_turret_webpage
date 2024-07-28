@@ -1,6 +1,9 @@
+#diagnose {
+    padding: 20px;
+}
+
 input[type="button"] {
     box-sizing: border-box;
-    font-size: 20px;
     color: #a88438;
     border: 2px solid rgb(168, 132, 56);
     background-color: transparent;
