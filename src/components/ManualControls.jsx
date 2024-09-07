@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState, useRef } from 'preact/hooks';
 import { origin, endpoint } from "../endpoint";
 import { socket } from '../socket';
 
 export function ManualControls(props) {
 
+    const lastUpdateTime = useRef(0);
+    const timeoutID = useRef(0);
     const movementData = new Uint8Array(2);
     const [wingsOpen, setWingsOpen] = useState(false);
+    const [angle, setAngle] = useState(90);
 
     const handleMessage = (event) => {
         const messageData = new Uint8Array(event.data);
@@ -19,35 +22,36 @@ export function ManualControls(props) {
         }
     })
 
+    useEffect(() => {
+        let now = Date.now()
+        if (now > lastUpdateTime.current + 30) {
+            sendAngleData();
+            lastUpdateTime.current = now;
+        }
+        
+        timeoutID.current = setTimeout(() => { sendAngleData() }, 30);
+
+        return () => {
+            clearTimeout(timeoutID.current);
+        }
+    }, [angle]);
+
+    const sendAngleData = () => {
+        movementData[0] = 2;
+        movementData[1] = angle;
+        socket.send(movementData);
+        console.log(angle);
+    }
+
     const sendFire = () => {
         movementData[0] = 1;
         socket.send(movementData);
     };
 
-    const startMoveLeft = () => {
-        movementData[0] = 2;
-        movementData[1] = 1;
-        socket.send(movementData);
-    };
-
-    const stopMoveLeft = () => {
-        movementData[0] = 2;
-        movementData[1] = 0;
-        socket.send(movementData);
-    };
-
-    const startMoveRight = () => {
-        movementData[0] = 2;
-        movementData[1] = 2;
-        socket.send(movementData);
-    };
-
-    const stopMoveRight = () => {
-        movementData[0] = 2;
-        movementData[1] = 0;
-        console.log(0);
-        socket.send(movementData);
-    };
+    const setTurretAngle = (e) => {
+        var a = parseInt(e.currentTarget.value);
+        setAngle(a);
+    }
 
     const setOpen = (open) => {
         const body = new FormData();
@@ -76,8 +80,7 @@ export function ManualControls(props) {
                 }} />
             </div>
             <div class="manual-button-container">
-                <input type="button" value="Left" onMouseDown={startMoveLeft} onMouseUp={stopMoveLeft} />
-                <input type="button" value="Right" onMouseDown={startMoveRight} onMouseUp={stopMoveRight} />
+                <input type="range" min="0" max="180" value={angle} class="slider" onInput={setTurretAngle} onChange={setTurretAngle} id="myRange" />
             </div>
         </div>
     )

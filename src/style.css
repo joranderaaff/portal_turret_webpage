@@ -94,7 +94,34 @@ body {
     width: 45%;
 }
 
+#manual-controls .slider {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 20px;
+    background: #a88438;
+    outline: none;
+}
+
+#manual-controls .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #cfb884;
+    appearance: none;
+    width: 23px;
+    height: 24px;
+    border: 0;
+    cursor: pointer;
+}
+
+#manual-controls .slider::-moz-range-thumb {
+    background: #cfb884;
+    width: 23px;
+    height: 25px;
+    border: 0;
+    cursor: pointer;
+}
+
 .manual-button-container {
     display: flex;
     justify-content: space-between;
+    max-width: 750px;
 }
