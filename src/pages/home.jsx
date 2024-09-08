@@ -111,7 +111,7 @@ export function Home() {
 	return (
 		<Fragment>
 			<div id="header">
-				<div id="logo"></div>
+				<a id="logo" href="/portal"></a>
 				<Accelerameter></Accelerameter>
 			</div>
 			<TypeWriter lines={lines}></TypeWriter>
