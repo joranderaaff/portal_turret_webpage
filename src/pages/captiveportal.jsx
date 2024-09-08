@@ -8,7 +8,7 @@ export function CaptivePortal() {
         <div id="captive-portal">
             <a href="/">Home</a>
             <a href="/settings">Settings</a>
-            <a href="/setup">Setup</a>
+            <a href="/setup">Setup WiFi</a>
             <a href="/diagnose">Diagnose</a>
         </div>
     </Fragment>
