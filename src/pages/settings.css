@@ -2,7 +2,7 @@
     padding: 20px;
 }
 
-input[type="text"], input[type="submit"] {
+input[type="text"], input[type="submit"], select {
     box-sizing: border-box;
     color: #a88438;
     border: 2px solid #a88438;
@@ -10,4 +10,5 @@ input[type="text"], input[type="submit"] {
     padding: 10px;
     font-family: "Courier New", Courier, monospace;
     font-weight: bold;
+    display: block;
 }

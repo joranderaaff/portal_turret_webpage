@@ -22,7 +22,8 @@ export function Settings() {
         "rotatePin": 13,
         "panicTreshold": 3.00,
         "restTreshold": 1.00,
-        "tippedOverTreshold": 5.00
+        "tippedOverTreshold": 5.00,
+        "language": "english"
     });
 
     useEffect(() => {
@@ -47,6 +48,14 @@ export function Settings() {
 
             var updatedSettings = { ...oldSettings };
             updatedSettings[name] = value;
+            return updatedSettings;
+        })
+    }
+
+    const setLanguage = (language) => {
+        setSettings((oldSettings) => {
+            var updatedSettings = { ...oldSettings };
+            updatedSettings.language = language;
             return updatedSettings;
         })
     }
@@ -85,6 +94,14 @@ export function Settings() {
         { label: "Wing GPIO Pin", name: "wingPin", type: "int" },
     ]
 
+    const languages = [
+        { label: "English", value: "english" },
+        { label: "German", value: "german" },
+        { label: "French", value: "french" },
+        { label: "Spanish", value: "spanish" },
+        { label: "Russian", value: "russian" },
+    ]
+
     let settingsContent;
     if (settingsLoaded) {
         settingsContent = <form method="POST" action={origin + "/settings"} >
@@ -101,6 +118,12 @@ export function Settings() {
                     } />
                 </Fragment>
             )}
+            <label>Language</label>
+            <select name="language" >
+                {languages.map((lang) => {
+                    return <option value={lang.value} selected={settings.language == lang.value} onChange={(e) => { setLanguage(e.currentTarget.value) }}>{lang.label}</option>
+                })}
+            </select>
             <input type="submit" value="Save and Reboot" />
         </form>
     } else {
