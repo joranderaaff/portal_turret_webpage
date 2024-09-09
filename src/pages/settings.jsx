@@ -23,7 +23,8 @@ export function Settings() {
         "panicTreshold": 3.00,
         "restTreshold": 1.00,
         "tippedOverTreshold": 5.00,
-        "language": "english"
+        "language": "english",
+        "audioUrl": "https://joranderaaff.nl/portal-sentry/audio/",
     });
 
     useEffect(() => {
@@ -56,6 +57,14 @@ export function Settings() {
         setSettings((oldSettings) => {
             var updatedSettings = { ...oldSettings };
             updatedSettings.language = language;
+            return updatedSettings;
+        })
+    }
+
+    const setAudioUrl = (audioUrl) => {
+        setSettings((oldSettings) => {
+            var updatedSettings = { ...oldSettings };
+            updatedSettings.audioUrl = audioUrl;
             return updatedSettings;
         })
     }
@@ -118,6 +127,12 @@ export function Settings() {
                     } />
                 </Fragment>
             )}
+
+            <label>Audio Download URL</label>
+            <input id="audio-url" name="audioUrl" type="text" value={settings.audioUrl} onChange={(e) => {
+                setAudioUrl(e.currentTarget.value);
+            }} />
+
             <label>Language</label>
             <select name="language" >
                 {languages.map((lang) => {

@@ -11,4 +11,6 @@ input[type="text"], input[type="submit"], select {
     font-family: "Courier New", Courier, monospace;
     font-weight: bold;
     display: block;
+    width: 500px;
+    max-width: 75%;
 }
